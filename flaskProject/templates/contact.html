@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% set title='contact' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block tohen %}
+    {% include 'nav.html' %}
+    {% if session['logedin'] %}
+        <div class="info">
+            <h1>Welcome {{ session['name'] | upper() }}</h1>
+            <form action="/log_out">
+                <button>Log Out</button>
+            </form>
+        </div>
+    {% endif %}
+    <div class="homePageBody">
+        <div class="container">
+            <div class="headerDiv">
+                <header class="header"> CONTACT US</header>
+            </div>
+            <div class="pDiv">
+                <form id="form" method="post" onsubmit="alert('Form Submitted!');">
+                    <label for="FullName"> Full Name</label>
+                    <input type="text" id="FullName" name="FullName" required><br>
+                    <label for="email"> Email</label>
+                    <input type="email" id="email" name="email" required> <br>
+                    <label for="password"> Password</label>
+                    <input type="password" id="password" name="password" required> <br>
+                    <label for="agree"> I agree</label>
+                    <input type="checkbox" id="agree" name="agree" required> <br>
+                    <button class="btn">submit</button>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

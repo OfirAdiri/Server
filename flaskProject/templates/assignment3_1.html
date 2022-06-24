@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% set title='assignment3_1' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block tohen %}
+    {% include 'nav.html' %}
+    {% if session['logedin'] %}
+        <div class="info">
+            <h1>Welcome {{ session['name'] | upper() }}</h1>
+            <form action="/log_out">
+                <button>Log Out</button>
+            </form>
+        </div>
+    {% endif %}
+    <div class="info">
+    {{ super() }}
+    </div>
+    {% if user_info %}
+        <div class="info">
+            <h2>User Info</h2>
+            <br>
+            {% for title, value in user_info.items() %}
+                <h3>{{ title }}: {{ value }}</h3>
+            {% endfor %}
+        </div>
+        <div class="info">
+            <h2>User Hobbies</h2>
+            <br>
+            <ul>
+                {% for hobbie in hobbies %}
+                    <li>{{ hobbie | upper() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        <h3>No info. Please log in.</h3>
+    {% endif %}
+{% endblock %}
+

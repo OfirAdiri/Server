@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% set title='assignment3_2' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block tohen %}
+    {% include 'nav.html' %}
+    {% if session['logedin'] %}
+        <div class="info">
+            <h1>Welcome {{ session['name'] | upper() }}</h1>
+            <form action="/log_out">
+                <button>Log Out</button>
+            </form>
+        </div>
+        <div class="info">
+            <h3>Search Form</h3>
+            <form method="GET" action="/assignment3_2">
+                <input type="text" name="email" placeholder="email">
+                <input type="submit" value="Find">
+            </form>
+            {% if user_name %}
+                <h3>name: {{ user_name }}</h3>
+                <h3>email: {{ user_email }}</h3>
+            {% endif %}
+            {% if message %}
+                <h3 style="color: red">{{ message }}</h3>
+            {% endif %}
+            {% if users_dict %}
+                <ul>
+                    {% for user in users_dict %}
+                        <li>name: {{ users_dict[user]['name'] | upper() }},
+                            email: {{ users_dict[user]['email'] | upper() }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% else %}
+        <div class="info">
+            <h3>Registration Form</h3>
+            <form method="POST" action="/assignment3_2">
+                <input type="text" name="name1" placeholder="name">
+                <input type="email" name="email1" placeholder="email">
+                <input type="submit" value="Sign In">
+            </form>
+            {% if message2 %}
+                <h3 style="color: red">{{ message2 }}</h3>
+            {% endif %}
+            {% if message3 %}
+                <h3 style="color: red">{{ message3 }}</h3>
+            {% endif %}
+            {% if message4 %}
+                <h3 style="color: red">{{ message4 }}</h3>
+            {% endif %}
+        </div>
+        <div class="info">
+            <h3>Search Form</h3>
+            <form method="GET" action="/assignment3_2">
+                <input type="emal" name="email" placeholder="email">
+                <input type="submit" value="Find">
+            </form>
+            {% if user_name %}
+                <h3>name: {{ user_name }}</h3>
+                <h3>email: {{ user_email }}</h3>
+            {% endif %}
+            {% if message %}
+                <h3 style="color: red">{{ message }}</h3>
+            {% endif %}
+            {% if users_dict %}
+                <ul>
+                    {% for user in users_dict %}
+                        <li>name: {{ users_dict[user]['name'] | upper() }},
+                            email: {{ users_dict[user]['email'] | upper() }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+    {% endif %}
+{% endblock %}
+

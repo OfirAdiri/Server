@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% set title='home' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block tohen %}
+    {% include 'nav.html' %}
+    {% if session['logedin'] %}
+        <div class="info">
+            <h1>Welcome {{ session['name'] | upper() }}</h1>
+            <form action="/log_out">
+                <button>Log Out</button>
+            </form>
+        </div>
+    {% endif %}
+    <div class="homePageBody">
+        <div class="container">
+            <div class="headerDiv">
+                <header class="header">WELCOME TO SPORT WORLD</header>
+            </div>
+            <div class="pDiv">
+                <p id="string">
+                    !ברוכים הבאים לאתר הספורט הגדול בעולם
+                </p><br>
+                <p id="demo"></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

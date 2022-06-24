@@ -1,0 +1,159 @@
+:root {
+    --green1: #5cce51;
+    --green2: #17df39;
+    --green3: #1db92a;
+    --green4: #054610;
+    --gray1: #7c7a76;
+    --gray2: #424242;
+    --black: #0c0900;
+    --white: color white;
+    --orange1: #ffa07a;
+}
+
+@keyframes example {
+    from {
+        background-color: var(--green1);
+    }
+
+    to {
+        background-color: var(--green4);
+    }
+}
+
+.active {
+    border: 2px solid var(--black);
+
+    border-radius: 5px;
+}
+
+.homePageBody {
+    background-color: lightgray;
+    font-family: myFont;
+}
+
+.logo_image {
+    float: right;
+    width: 65px;
+    height: 65px;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.nav {
+    background-color: var(--green1);
+    color: var(--black);
+    display: flex;
+    padding-right: 0px;
+    right: 0px;
+    font-size: 20px;
+    height: 65px;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+
+}
+
+.nav-list {
+    list-style-type: none;
+    padding-right: 0px;
+}
+
+.nav-list .list-item {
+    display: inline-block;
+    padding: 10px;
+}
+
+#string {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
+
+.header {
+    padding-top: 20px;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
+
+#form {
+    padding-top: 20px;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
+
+#details {
+    padding-top: 20px;
+    color: black;
+    font-size: 30px;
+    text-align: center;
+}
+.info {
+    border: darkgrey 3px solid;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 50%;
+    padding: 10px;
+    align-content: center;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        'Nav Nav Nav'
+        'Header Header Header'
+        'Main Main Main';
+}
+
+.navBar {
+    grid-area: Nav;
+}
+
+.headerDiv {
+    grid-area: Header;
+
+}
+
+.pDiv {
+    grid-area: Main;
+    padding-top: 20px;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .homePageBody {
+        background-color: lightskyblue;
+    }
+
+
+    .container {
+        display: grid;
+        grid-template-areas: 'Nav'
+            'Header'
+            'Main';
+    }
+
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(../static/MPLUS1p-Medium.ttf);
+}
+
+.btn {
+    background-color: var(--orange1);
+    border: none;
+    color: black;
+    padding: 12px 22px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 1
+}
