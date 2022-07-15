@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% set title='assignment4' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block tohen %}
+    {% include 'nav.html' %}
+        <div class="info">
+            <form action="/insert_user" method="post">
+                 <h3>הוספת משתמש:</h3>
+                <label id="user-name" for="user-name">שם משתמש:</label> <br>
+                <input type="text" name="user-name" required> <br>
+                <label id="user-email" for="user-email">אימייל:</label> <br>
+                <input type="email" name="user-email" required> <br>
+                <input class="button" type="submit">
+            </form>
+        </div>
+        <h3>
+            {{
+                message_for_user
+            }}
+        </h3>
+        <div class="info">
+            <form action="/update_user" method="post">
+                <h3>עדכון פרטי משתמש:</h3>
+                <label id="user-email" for="user-email-update">הכנס אימייל לצורך עדכון פרטים:</label> <br>
+                <input type="email" name="user-email"> <br>
+                <label id="user-name-update" for="user-name-update">שם משתמש מעודכן:</label> <br>
+                <input type="text" name="user-name-update"> <br>
+                <input class="button" type="submit">
+            </form>
+        </div>
+        <h4>
+             {{
+                message_for_update
+             }}
+        </h4>
+
+        <div class="info">
+           <form action="/delete_user" method="post">
+                 <h3>מחיקת משתמש:</h3>
+                 <label for="user-id">הכנס אימייל לצורך מחיקה:</label> <br>
+                 <input type="email" name="user_email" required> <br>
+                 <input class="button" type="submit">
+           </form>
+        </div>
+
+        <h4>
+             {{
+                 message_for_delete
+             }}
+        </h4>
+
+        <div class="info">
+             <form action="/select-users" method="get">
+                <h3>הצג משתמשים רשומים:</h3>
+                <input class="button" type="submit" value="submit">
+             </form>
+        </div>
+
+        {% for user in users %}
+        <div class="info">
+            <h4><span >שם משתמש:</span> {{ user.name }}, <span>אימייל:</span>{{ user.email }}</h4>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+

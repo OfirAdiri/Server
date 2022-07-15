@@ -96,6 +96,11 @@ def logout_func():
     session.clear()
     return redirect(url_for('assignment3_2_func'))
 
+###### Pages
+## assignment4
+from pages.assignment4.assignment4 import assignment_4
+app.register_blueprint(assignment_4)
+
 if __name__ == '__main__':
     app.run(debug=True)
     app.run()

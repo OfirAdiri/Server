@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% set title='outer_source' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block tohen %}
+    {% include 'nav.html' %}
+        <div class="info">
+            <form action="/fetch_from_backend" method="get">
+                <h3>Get from backend </h3>
+                <input id="user_number_2" type="number" name="user_number_2" required>
+                <input type="submit" class="button" value="לחץ כאן"/>
+            </form>
+        </div>
+
+        <div class="info">
+             {% if request_data %}
+                  <h3> {{request_data.first_name}} {{request_data.last_name}} </h3>
+                  <h4> {{request_data.email}} </h4>
+                  <img src="{{request_data.avatar}}" alt="Profile Picture"/>
+             {% endif %}
+        </div>
+
+        <div class="info">
+            <h3>Get from frontend </h3>
+            <form onsubmit="frontend()" >
+                <input type="number" name="id" id="front_id" required>
+                <input type="submit"  value="לחץ כאן" onclick="frontend()" >
+            </form>
+        </div>
+
+        <div class="info">
+            <h3> Get User in Json</h3>
+            <form action="/restapi_users" >
+                <input type="number" name="id">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+
+{% endblock %}
+{% block js %}
+    <script src="{{ url_for('assignment4.static', filename='myJS.js') }}"></script>
+{% endblock %}
+
